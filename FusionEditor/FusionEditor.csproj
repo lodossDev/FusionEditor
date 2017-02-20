@@ -1,0 +1,1316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{163B28F8-D105-4D53-A10B-B915E8E63AF5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FusionEditor</RootNamespace>
+    <AssemblyName>FusionEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoGame.Framework.WpfInterop, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WpfInterop.1.4.0\lib\net45\MonoGame.Framework.WpfInterop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CharacterView.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Desktop\FusionEngine\FusionEngine\FusionEngine\FusionEngine.csproj">
+      <Project>{20D017EB-75E5-40D5-88D0-C264B8C48149}</Project>
+      <Name>FusionEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack1\Attack1_10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack2\Attack2_09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack3\Attack3_10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack4\Attack4_00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack4\Attack4_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack4\Attack4_02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack4\Attack4_03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack4\Attack4_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack4\Attack4_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack5\Attack5_09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Attack6\Attack6_09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Falling\Jump16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack1\JumpAttack1_7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_00.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_01.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_02.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_03.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_04.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_05.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_06.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_07.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_08.png" />
+    <Content Include="Content\Sprites\Actors\Leo\JumpRecover1\JumpRecover1_0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpRecover1\JumpRecover1_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpRecover1\JumpRecover1_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpRecover1\JumpRecover1_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpStart\JumpStart00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpStart\JumpStart01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpStart\JumpStart02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\JumpTowards\JumpTowards14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Jump\Jump16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Land\Land06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Spark1\Spark15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance17.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance18.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Leo\Stance\Stance19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk00.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk01.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk02.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk03.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk04.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk05.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk06.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk07.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk08.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk09.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk10.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk11.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk12.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk13.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk14.png" />
+    <Resource Include="Content\Sprites\Actors\Leo\Walk\Walk15.png" />
+    <Content Include="Content\Sprites\Actors\Ryo\Attack1\IMG00000.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack1\IMG00001.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack1\IMG00002.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack1\IMG00003.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack1\IMG00004.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack2\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack3\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Attack4\Frame9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fall1\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fall1\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fall1\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fall1\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Fireball1\Frame09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\FireballTest1\Frame09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Grab1\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Grab1\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Grab1\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\GrabAttack1\Frame8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame010.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame011.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame012.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame013.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame014.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Hitflash1\Frame09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack1\Frame07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack2\Frame09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpAttack3\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\JumpStart\jump_start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Jump\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Jump\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Jump\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Jump\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Jump\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Jump\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Land1\IMG00000.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Land1\IMG00001.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\RunStop1\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\RunStop1\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Run\Frame8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Content\Sprites\Actors\Ryo\ryo.png" />
+    <Resource Include="Content\Sprites\Actors\Ryo\ryo.txt" />
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Special1\Frame9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame17.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame18.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame20.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame21.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame22.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame23.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame25.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame26.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame27.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame28.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame30.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame31.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame33.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame34.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame35.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame36.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame37.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Stance\Frame9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\Throw1\Frame9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame06.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame08.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Actors\Ryo\WalkTowards\Frame09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack1\Frame0.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack1\Frame1.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack1\Frame2.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack1\Frame3.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack1\Frame4.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame0.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame1.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame2.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame3.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame4.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame5.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame6.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame7.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame8.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack2\Frame9.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame0.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame1.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame10.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame2.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame3.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame4.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame5.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame6.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame7.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame8.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack3\Frame9.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame0.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame1.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame10.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame11.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame12.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame2.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame3.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame4.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame5.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame6.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame7.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame8.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Attack4\Frame9.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame000.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame010.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame0100.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame0110.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame0120.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame0130.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame020.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame030.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame040.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame050.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame060.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame070.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame080.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Stance\Frame090.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame0.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame1.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame2.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame3.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame4.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame5.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Towards\Frame0.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Towards\Frame1.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Towards\Frame2.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Towards\Frame3.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Towards\Frame4.png" />
+    <Resource Include="Content\Sprites\Actors\Taskmaster\Walk Towards\Frame5.png" />
+    <Resource Include="Content\Sprites\Levels\Stage1\bg.gif" />
+    <Resource Include="Content\Sprites\Levels\Stage1\ddbg1.png" />
+    <Resource Include="Content\Sprites\Levels\Stage1\ddpanel1.png" />
+    <Resource Include="Content\Sprites\Levels\Stage1\front.gif" />
+    <Resource Include="Content\Sprites\Levels\Stage1\front2.gif" />
+    <Resource Include="Content\Sprites\Levels\Stage1\normal01.gif" />
+    <Resource Include="Content\Sprites\Levels\Stage1\pal.png" />
+    <Resource Include="Content\Sprites\Levels\Stage1\panel.gif" />
+    <Resource Include="Content\Sprites\LifeBars\RedEarth\Bar\bar.png" />
+    <Resource Include="Content\Sprites\LifeBars\RedEarth\Container\container.png" />
+    <Resource Include="Content\Sprites\LifeBars\RedEarth\Placeholder\placeholder.png" />
+    <Resource Include="Content\Sprites\Misc\base.png" />
+    <Resource Include="Content\Sprites\Misc\Drum\Die1\drum.png" />
+    <Resource Include="Content\Sprites\Misc\Drum\Pain1\drum.png" />
+    <Resource Include="Content\Sprites\Misc\Drum\Pain2\drum.png" />
+    <Resource Include="Content\Sprites\Misc\Drum\Stance\drum.png" />
+    <Content Include="Content\Sprites\Misc\Marker\Marker.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Content\Sprites\Misc\Phone\Die1\Phone 01.png" />
+    <Resource Include="Content\Sprites\Misc\Phone\Die1\Phone 02.png" />
+    <Resource Include="Content\Sprites\Misc\Phone\Stance\Phone 01.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
