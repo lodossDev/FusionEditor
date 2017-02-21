@@ -57,9 +57,15 @@ namespace FusionEditor {
         }
 
         private void initActorsMap(String actor, String animation, String dir) {
-            List<string> files = Directory.GetFiles(dir).ToList();
+            List<string> files;
 
-            if (files.Count != 0 && actor != null && animation != null) {
+            try { 
+                files = Directory.GetFiles(dir).ToList();
+            } catch(System.Exception ex) {
+                files = null;
+            }
+
+            if (files != null && files.Count != 0 && actor != null && animation != null) {
                 for (int i = 0; i < files.Count; i++) {
                     actorsMap[actor][animation].Add(Convert.ToString(i + 1));
                 }
@@ -70,6 +76,7 @@ namespace FusionEditor {
                     if (actor != null) {
                         if (actorsMap[actor].ContainsKey(folderName) == false) {
                             actorsMap[actor].Add(folderName, new List<string>());
+
                             initActorsMap(actor, folderName, path);
                         }
                     } else if (actorsMap.ContainsKey(folderName) == false) {
