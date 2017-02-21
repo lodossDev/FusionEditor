@@ -390,3 +390,112 @@ C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\MonoGame.Extended.dll
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\FusionEngine.pdb
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Marker\Marker.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_00.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_01.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_02.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_03.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_04.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_05.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_06.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_07.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_08.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk00.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk01.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk02.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk03.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk04.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk05.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk06.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk07.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk08.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk09.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk10.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk11.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk12.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk13.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk14.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Walk\Walk15.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack1\Frame0.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack1\Frame1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack1\Frame2.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack1\Frame3.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack1\Frame4.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame0.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame2.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame3.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame4.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame5.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame6.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame7.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame8.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack2\Frame9.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame0.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame10.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame2.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame3.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame4.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame5.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame6.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame7.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame8.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack3\Frame9.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame0.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame10.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame11.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame12.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame2.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame3.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame4.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame5.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame6.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame7.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame8.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Attack4\Frame9.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame000.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame010.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame0100.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame0110.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame0120.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame0130.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame020.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame030.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame040.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame050.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame060.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame070.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame080.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Stance\Frame090.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame0.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame2.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame3.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame4.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Backwards\Frame5.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Towards\Frame0.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Towards\Frame1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Towards\Frame2.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Towards\Frame3.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Towards\Frame4.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Taskmaster\Walk Towards\Frame5.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\bg.gif
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\ddbg1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\ddpanel1.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\front.gif
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\front2.gif
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\normal01.gif
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\pal.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Levels\Stage1\panel.gif
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\LifeBars\RedEarth\Bar\bar.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\LifeBars\RedEarth\Container\container.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\LifeBars\RedEarth\Placeholder\placeholder.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\base.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Drum\Die1\drum.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Drum\Pain1\drum.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Drum\Pain2\drum.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Drum\Stance\drum.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Die1\Phone 01.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Die1\Phone 02.png
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Stance\Phone 01.png

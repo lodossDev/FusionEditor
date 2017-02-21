@@ -6,12 +6,21 @@
         xmlns:local="clr-namespace:FusionEditor"
         xmlns:FusionEditor="clr-namespace:FusionEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1024">
+        Title="MainWindow" Height="800" Width="1024"
+        Loaded="Window_Loaded" 
+        ContentRendered="Window_ContentRendered" 
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <FusionEditor:CharacterView Width="800" Height="600" x:Name="characterView" Margin="108,85" />
-        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="845,10,0,0" VerticalAlignment="Top" Width="152" ValueChanged="slider_ValueChanged" TickFrequency="0.2" TickPlacement="BottomRight"/>
+        
+        <FusionEditor:CharacterView Width="800" Height="600" x:Name="characterView" Margin="108,85" Animation="{Binding SelectedValue, ElementName=animations}" Frame="{Binding SelectedValue, ElementName=frames}" Scale="{Binding Value, ElementName=scaleSlider}"/>
+        
+        <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="845,10,0,0" VerticalAlignment="Top" Width="152" ValueChanged="slider_ValueChanged" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
+        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged"/>
+        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="animations_SelectionChanged"/>
+        <ComboBox x:Name="frames" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="attackBoxBtn" Content="Add Attack Box" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="97"/>
     </Grid>
 </Window>
