@@ -86,11 +86,9 @@ namespace FusionEditor {
                 }
             }
         }
-        
 
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            //Debug.WriteLine(slider.Value);
-            //characterView.WI
+        private void saveBtn_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }

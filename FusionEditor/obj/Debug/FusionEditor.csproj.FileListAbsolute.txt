@@ -976,7 +976,6 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Fusi
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\FusionEngine.dll
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\MonoGame.Framework.dll
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\MonoGame.Framework.WpfInterop.dll
-C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\MonoGame.Extended.dll
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\SharpDX.MediaFoundation.dll
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\SharpDX.dll
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\SharpDX.XAudio2.dll
@@ -989,7 +988,6 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Shar
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\MonoGame.Framework.xml
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\MonoGame.Framework.WpfInterop.xml
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\SharpDX.Direct3D9.xml
-C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.csprojResolveAssemblyReference.cache
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\MainWindow.g.cs
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\App.g.cs
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor_Content.g.cs

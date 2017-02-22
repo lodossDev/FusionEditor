@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:FusionEditor"
         xmlns:FusionEditor="clr-namespace:FusionEditor"
         mc:Ignorable="d"
-        Title="Character Editor" Height="800" Width="1024"
+        Title="Character Viewer" Height="800" Width="1024"
         Loaded="Window_Loaded" 
-        ContentRendered="Window_ContentRendered" 
+        ContentRendered="Window_ContentRendered"
+        ResizeMode="NoResize"
         >
     <Grid >
         <Grid.ColumnDefinitions>
@@ -16,18 +17,43 @@
             <ColumnDefinition Width="506*"/>
         </Grid.ColumnDefinitions>
 
-        <FusionEditor:CharacterView Width="800" Height="600" x:Name="characterView" Margin="108,85,108,84" Animation="{Binding SelectedValue, ElementName=animations}" Frame="{Binding SelectedValue, ElementName=frames}" Scale="{Binding Value, ElementName=scaleSlider}" ShowAttackBoxes="{Binding IsChecked, ElementName=checkAttackBoxes}" ShowBodyBoxes="{Binding IsChecked, ElementName=checkBodyBoxes}" ShowBoundsBoxes="{Binding IsChecked, ElementName=checkBoundsBoxes}" Grid.ColumnSpan="2"/>
+        <FusionEditor:CharacterView Width="800" x:Name="characterView" Margin="17,85,201,17" Grid.ColumnSpan="2"  
+                Animation="{Binding SelectedValue, ElementName=animations}" 
+                Frame="{Binding SelectedValue, ElementName=frames}" Scale="{Binding Value, ElementName=scaleSlider}" 
+                ShowAttackBoxes="{Binding IsChecked, ElementName=checkAttackBoxes}" ShowBodyBoxes="{Binding IsChecked, ElementName=checkBodyBoxes}" 
+                ShowBoundsBoxes="{Binding IsChecked, ElementName=checkBoundsBoxes}"  
+                SelectedBoxType="{Binding SelectedValue, ElementName=comboBoxType}"            
+                SelectedBoxItem="{Binding SelectedValue, ElementName=comboBoxItems}"/>
 
-        <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="334.5,10,0,0" VerticalAlignment="Top" Width="152" ValueChanged="slider_ValueChanged" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Grid.Column="1"/>
-        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged"/>
-        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="animations_SelectionChanged"/>
-        <ComboBox x:Name="frames" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="attackBoxBtn" Content="Add Attack Box" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="97"/>
-        
-        
-        
-        <CheckBox x:Name="checkAttackBoxes" Content="Show Attack Boxes" HorizontalAlignment="Left" Margin="198,12,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <CheckBox x:Name="checkBodyBoxes" Content="Show Body Boxes" HorizontalAlignment="Left" Margin="198,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <CheckBox x:Name="checkBoundsBoxes" Content="Show Bounds Boxes" HorizontalAlignment="Left" Margin="198,52,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="334.5,10,0,0" VerticalAlignment="Top" Width="152" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Grid.Column="1"/>
+        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged"/>
+        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="135,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="animations_SelectionChanged"/>
+        <ComboBox x:Name="frames" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <CheckBox x:Name="checkAttackBoxes" Content="Show Attack Boxes" HorizontalAlignment="Left" Margin="197,12,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox x:Name="checkBodyBoxes" Content="Show Body Boxes" HorizontalAlignment="Left" Margin="197,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox x:Name="checkBoundsBoxes" Content="Show Bounds Boxes" HorizontalAlignment="Left" Margin="197,52,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+        <Label x:Name="entityLabel" Content="Entity" HorizontalAlignment="Left" Margin="49,2,0,0" VerticalAlignment="Top" Width="41"/>
+        <Label x:Name="animationsLabel" Content="Animations" HorizontalAlignment="Left" Margin="154,2,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="framesLabel" Content="Frames" HorizontalAlignment="Left" Margin="290,2,0,0" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="385,29,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content">
+            <ComboBoxItem >Attack Box</ComboBoxItem>
+            <ComboBoxItem >Body Box</ComboBoxItem>
+        </ComboBox>
+
+        <Label x:Name="boxTypeLabel" Content="Box Type" HorizontalAlignment="Left" Margin="413,2,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxItems" Grid.Column="1" HorizontalAlignment="Left" Margin="4,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BoxItems, ElementName=characterView}"/>
+        <Label x:Name="boxItemsLabel" Content="Box Items" HorizontalAlignment="Left" Margin="24,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="boxWidth" HorizontalAlignment="Left" Height="23" Margin="375,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Width, ElementName=characterView}"/>
+        <Label x:Name="boxWidthLabel" Content="Width" HorizontalAlignment="Left" Height="25" Margin="329,77,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="45"/>
+        <Label x:Name="boxHeightLabel" Content="Height" HorizontalAlignment="Left" Height="26" Margin="325,104,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="52"/>
+        <TextBox x:Name="boxHeight" HorizontalAlignment="Left" Height="23" Margin="375,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Height, ElementName=characterView}"/>
+        <TextBox x:Name="boxX" HorizontalAlignment="Left" Height="23" Margin="375,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.X, ElementName=characterView}"/>
+        <Label x:Name="boxXLabel" Content="X" HorizontalAlignment="Left" Height="25" Margin="355,134,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
+        <Label x:Name="boxYLabel" Content="Y" HorizontalAlignment="Left" Height="26" Margin="356,162,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        <TextBox x:Name="boxY" HorizontalAlignment="Left" Height="23" Margin="375,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Y, ElementName=characterView}"/>
+        <Button x:Name="saveBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="388,193,0,0" VerticalAlignment="Top" Width="47" Click="saveBtn_Click" Command="{Binding SaveBoxCommand, ElementName=characterView, Mode=OneWay}"/>
     </Grid>
 </Window>

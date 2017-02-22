@@ -11,6 +11,7 @@ using FusionEngine;
 using System.Windows;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Input;
+using System.Windows.Input;
 
 namespace FusionEditor {
 
@@ -22,6 +23,7 @@ namespace FusionEditor {
         private KeyboardState _keyboardState;
         private KeyboardState _previousKeyboardState;
         private WpfMouse _mouse;
+
         private RenderManager renderManager;
         private Entity actor;
         private Vector2 baseScale = Vector2.Zero;
@@ -37,6 +39,11 @@ namespace FusionEditor {
         private Vector2 boundsOffset = Vector2.Zero;
         private Vector2 depthOffset = Vector2.Zero;
 
+        private CLNS.BoxType selectedBoxType;
+        private CLNS.BoundingBox selectedBoundingBox;
+        private BoundingBox internalSelectedBox;
+        private ICommand _saveBoxCommand;
+
         public static readonly DependencyProperty ActorProperty = DependencyProperty.Register("Actor", typeof(string), typeof(CharacterView), new PropertyMetadata("", ActorOnChangeValue));
         public static readonly DependencyProperty AnimationProperty = DependencyProperty.Register("Animation", typeof(string), typeof(CharacterView), new PropertyMetadata("", AnimationOnChangeValue));
         public static readonly DependencyProperty FrameProperty = DependencyProperty.Register("Frame", typeof(string), typeof(CharacterView), new PropertyMetadata("", FrameOnChangeValue));
@@ -44,6 +51,21 @@ namespace FusionEditor {
         public static readonly DependencyProperty ShowAttackBoxesProperty = DependencyProperty.Register("ShowAttackBoxes", typeof(bool), typeof(CharacterView), new PropertyMetadata(false, ShowAttackBoxesOnChangeValue));
         public static readonly DependencyProperty ShowBodyBoxesProperty = DependencyProperty.Register("ShowBodyBoxes", typeof(bool), typeof(CharacterView), new PropertyMetadata(false, ShowBodyBoxesOnChangeValue));
         public static readonly DependencyProperty ShowBoundsBoxesProperty = DependencyProperty.Register("ShowBoundsBoxes", typeof(bool), typeof(CharacterView), new PropertyMetadata(false, ShowBoundsBoxesOnChangeValue));
+        public static readonly DependencyProperty BoxItemsProperty = DependencyProperty.Register("BoxItems", typeof(List<string>), typeof(CharacterView));
+        public static readonly DependencyProperty SelectedBoxTypeProperty = DependencyProperty.Register("SelectedBoxType", typeof(string), typeof(CharacterView), new PropertyMetadata("", BoxTypeOnChangeValue));
+        public static readonly DependencyProperty SelectedBoxItemProperty = DependencyProperty.Register("SelectedBoxItem", typeof(string), typeof(CharacterView), new PropertyMetadata("", BoxItemOnChangeValue));
+        public static readonly DependencyProperty SelectedRectItemProperty = DependencyProperty.Register("SelectedRectItem", typeof(BoundingBox), typeof(CharacterView), new PropertyMetadata(null, RectItemOnChangeValue));
+
+
+        public ICommand SaveBoxCommand {
+            get {
+                if (_saveBoxCommand == null) {
+                    _saveBoxCommand = new RelayCommand(param => this.UpdateSelectedBox(), param => this.CanUpdateSelectedBox());
+                }
+
+                return _saveBoxCommand;
+            }
+        }
 
         public string Actor {
             get {
@@ -115,6 +137,48 @@ namespace FusionEditor {
             }
         }
 
+        public List<string> BoxItems {
+            get {
+                return (List<string>)GetValue(BoxItemsProperty);
+            }
+
+            set {
+                SetValue(BoxItemsProperty, value);
+            }
+        }
+
+        public string SelectedBoxType {
+            get {
+                return (string)GetValue(SelectedBoxTypeProperty);
+            }
+
+            set {
+                SetValue(SelectedBoxTypeProperty, value);
+            }
+        }
+
+        public string SelectedBoxItem {
+            get {
+                return (string)GetValue(SelectedBoxItemProperty);
+            }
+
+            set {
+                SetValue(SelectedBoxItemProperty, value);
+            }
+        }
+
+        public BoundingBox SelectedRectItem {
+            get {
+                return (BoundingBox)GetValue(SelectedRectItemProperty);
+            }
+
+            set {
+                if (SelectedRectItem != value) { 
+                    SetValue(SelectedRectItemProperty, value);
+                }
+            }
+        }
+
         private static void ActorOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
             if (e != null) {
                 CharacterView instance = source as CharacterView;
@@ -131,7 +195,6 @@ namespace FusionEditor {
 
                     if (string.IsNullOrEmpty(animation) == false) { 
                         Animation.State state;
-
                         bool hasState = Enum.TryParse(animation, true, out state);
 
                         if (hasState) {
@@ -156,6 +219,104 @@ namespace FusionEditor {
                 if (String.IsNullOrEmpty(frame) == false) {
                     instance.actor.GetCurrentSprite().SetCurrentFrame(Convert.ToInt32(frame));
                 }
+
+                List<string> boxItems = new List<string>();
+
+                if (String.IsNullOrEmpty(instance.SelectedBoxType) == false 
+                        && String.IsNullOrEmpty(instance.Animation) == false
+                        && String.IsNullOrEmpty(instance.Frame) == false) {
+
+                    for (int i = 0; i < instance.actor.GetCurrentBoxes(instance.selectedBoxType).Count; i++) {
+                        boxItems.Add(Convert.ToString( i + 1));
+                    }
+                }
+
+                instance.BoxItems = boxItems;
+            }
+        }
+
+        private static void BoxTypeOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
+            if (e != null) {
+                List<string> boxItems = new List<string>();
+                CharacterView instance = source as CharacterView;
+                String boxType = (string)e.NewValue;
+                instance.internalSelectedBox = new BoundingBox();
+
+                if (String.IsNullOrEmpty(boxType) == false 
+                        && String.IsNullOrEmpty(instance.Animation) == false
+                        && String.IsNullOrEmpty(instance.Frame) == false) {
+
+                    bool hasBoxType = Enum.TryParse(boxType.ToUpper().Replace("ATTACK", "HIT").Replace(" ", "_"), true, out instance.selectedBoxType);
+
+                    if (hasBoxType) {
+                        for (int i = 0; i < instance.actor.GetCurrentBoxes(instance.selectedBoxType).Count; i++) {
+                            boxItems.Add(Convert.ToString( i + 1));
+                        }
+                    }
+                }
+
+                instance.BoxItems = boxItems;
+            }
+        }
+
+        private static void BoxItemOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
+            if (e != null) {
+                CharacterView instance = source as CharacterView;
+                String boxItem = (string)e.NewValue;
+
+                instance.internalSelectedBox = new BoundingBox();
+
+                if (String.IsNullOrEmpty(boxItem) == false 
+                        && String.IsNullOrEmpty(instance.Animation) == false
+                        && String.IsNullOrEmpty(instance.Frame) == false
+                        && String.IsNullOrEmpty(instance.SelectedBoxType) == false) {
+
+                    instance.selectedBoundingBox = instance.actor.GetCurrentBoxes(instance.selectedBoxType)[Convert.ToInt32(boxItem) - 1];
+                    Debug.WriteLine("instance.selectedBoundingBox: " + instance.selectedBoundingBox.GetRect().Width + " - " + instance.selectedBoundingBox.GetRect().Height + " - " + instance.selectedBoundingBox.GetOffset());
+
+                    instance.internalSelectedBox.X = (int)Math.Round(instance.selectedBoundingBox.GetOffset().X);
+                    instance.internalSelectedBox.Y = (int)Math.Round(instance.selectedBoundingBox.GetOffset().Y);
+
+                    instance.internalSelectedBox.Width = instance.selectedBoundingBox.GetRect().Width;
+                    instance.internalSelectedBox.Height = instance.selectedBoundingBox.GetRect().Height;
+
+                    Debug.WriteLine("instance.selectedRectItem: " + instance.SelectedRectItem.Width + " - " + instance.SelectedRectItem.Height);
+                    instance.selectedBoundingBox.SetVisibility(1.0f);
+
+                    instance.actor.GetBodyBox().SetVisibility(0.4f);
+                    instance.actor.GetBoundsBox().SetVisibility(0.4f);
+                    instance.actor.GetDepthBox().SetVisibility(0.4f);
+
+                    for (int i = 0; i < instance.actor.GetAllFrameBoxes().Count; i++) {
+                        CLNS.BoundingBox box = instance.actor.GetAllFrameBoxes()[i];
+                        
+                        if (box != instance.selectedBoundingBox) {
+                            box.SetVisibility(0.4f);
+                        }
+                    }
+                } else {
+                    if (instance.actor != null) {
+                        instance.actor.GetBodyBox().SetVisibility(1.0f);
+                        instance.actor.GetBoundsBox().SetVisibility(1.0f);
+                        instance.actor.GetDepthBox().SetVisibility(1.0f);
+
+                        for (int i = 0; i < instance.actor.GetAllFrameBoxes().Count; i++) {
+                            CLNS.BoundingBox box = instance.actor.GetAllFrameBoxes()[i];
+                            box.SetVisibility(1.0f);
+                        }
+                    }
+                }
+
+                instance.SelectedRectItem = instance.internalSelectedBox;
+            }
+        }
+
+        private static void RectItemOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
+             if (e != null) {
+                CharacterView instance = source as CharacterView;
+                BoundingBox rect = (BoundingBox)e.NewValue;
+
+                Debug.WriteLine("RECT: " + rect.Width + " - " + rect.Height);
             }
         }
 
@@ -181,7 +342,7 @@ namespace FusionEditor {
                     }
 
                     instance.actor.SetScale(sx, sy);
-                    instance.actor.MoveY(-(newScale - oldScale) * 20);
+                    instance.actor.MoveY(-(newScale - oldScale) * 60);
                     instance.CheckScale();
                 } else {
                     instance.actor.SetScale(instance.baseScale.X - 1, instance.baseScale.Y - 1);
@@ -228,6 +389,23 @@ namespace FusionEditor {
                     instance.renderManager.HideBoundsBoxes();
                 }
             }
+        }
+
+        private bool CanUpdateSelectedBox() {
+            return true;
+        }
+
+        private void UpdateSelectedBox() {
+            float diffX = ((actor.GetScale().X - baseScale.X) / baseScale.X);
+            float diffY = ((actor.GetScale().Y - baseScale.Y) / baseScale.Y);
+
+            Debug.WriteLine("DIFF X ADD: " + diffX);
+
+            selectedBoundingBox.SetRectWidth((int)Math.Round(SelectedRectItem.Width * diffX));
+            selectedBoundingBox.SetRectHeight((int)Math.Round(SelectedRectItem.Height * diffY));
+
+            selectedBoundingBox.SetOffSetX(SelectedRectItem.X * diffX);
+            selectedBoundingBox.SetOffSetY(SelectedRectItem.Y * diffY);
         }
 
         protected override void Initialize() {
@@ -304,6 +482,14 @@ namespace FusionEditor {
                 CLNS.BoundingBox box = actor.GetAllFrameBoxes()[i];
                 Rectangle frameRect = frameBoxes[i];
                 Vector2 frameOffset = frameOffsets[i];
+
+                if (selectedBoundingBox != null && box == selectedBoundingBox) {
+                    frameRect.Width = selectedBoundingBox.GetRect().Width;
+                    frameRect.Height = selectedBoundingBox.GetRect().Height;
+
+                    frameOffset.X = selectedBoundingBox.GetOffset().X;
+                    frameOffset.Y = selectedBoundingBox.GetOffset().Y;
+                }
 
                 box.SetRectWidth((int)(frameRect.Width + (frameRect.Width * diffX)));
                 box.SetRectHeight((int)((frameRect.Height + (frameRect.Height * diffY))));
