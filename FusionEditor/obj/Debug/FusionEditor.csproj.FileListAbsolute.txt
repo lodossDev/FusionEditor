@@ -14,7 +14,6 @@ c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor
 c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\SharpDX.Direct3D9.dll
 c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\MonoGame.Framework.xml
 c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\MonoGame.Framework.WpfInterop.xml
-c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\obj\Debug\FusionEditor.csprojResolveAssemblyReference.cache
 c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\obj\Debug\MainWindow.g.cs
 c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\obj\Debug\App.g.cs
 c:\users\ahafeez\documents\visual studio 2015\Projects\FusionEditor\FusionEditor\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -386,9 +385,6 @@ C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Ryo\WalkTowards\Frame07.png
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Ryo\WalkTowards\Frame08.png
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Ryo\WalkTowards\Frame09.png
-C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\FusionEngine.exe
-C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\MonoGame.Extended.dll
-C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\FusionEngine.pdb
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Marker\Marker.png
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_00.png
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\JumpAttack2\JumpAttack2_01.png
@@ -998,3 +994,4 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\Main
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.g.resources
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.Properties.Resources.resources
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.csproj.GenerateResource.Cache
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\FusionEngine.dll

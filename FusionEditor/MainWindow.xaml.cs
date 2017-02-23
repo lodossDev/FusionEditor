@@ -36,10 +36,6 @@ namespace FusionEditor {
             }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) {
-
-        }
-
         private void actors_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             animations.Items.Clear();
 
@@ -85,10 +81,6 @@ namespace FusionEditor {
                     }
                 }
             }
-        }
-
-        private void saveBtn_Click(object sender, RoutedEventArgs e) {
-
         }
     }
 }
