@@ -465,7 +465,7 @@ namespace FusionEditor {
 
         private void UpdateFrameOffset() {
             _actor.SetFrameOffset(_actor.GetCurrentAnimationState(), _actor.GetCurrentFrame() + 1, FrameOffset.X, FrameOffset.Y);
-            _actor.SetSpriteOffSet(_actor.GetCurrentAnimationState(), FrameOffset.X, FrameOffset.Y);
+            _actor.SetSpriteOffSet(_actor.GetCurrentAnimationState(), SpriteOffset.X, SpriteOffset.Y);
         }
 
         protected override void Initialize() {
