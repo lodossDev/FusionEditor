@@ -38,7 +38,8 @@ namespace FusionEditor {
         private Position _frameOffset;
         private Position _spriteOffset;
         private List<string> _frames;
-        private float _lastScale;
+        private float _lastNewScale;
+        private float _lastOldScale;
 
         public static readonly DependencyProperty ActorProperty = DependencyProperty.Register("Actor", typeof(string), typeof(CharacterView), new PropertyMetadata("", ActorOnChangeValue));
         public static readonly DependencyProperty AnimationProperty = DependencyProperty.Register("Animation", typeof(string), typeof(CharacterView), new PropertyMetadata("", AnimationOnChangeValue));
@@ -262,8 +263,8 @@ namespace FusionEditor {
                             instance._renderManager.AddEntity(instance._actor);
                         }
 
-                        instance.CheckScale(instance._lastScale, 0);
-                        Debug.WriteLine("SCALE: " + instance._lastScale);
+                        instance.CheckScale(instance._lastNewScale, instance._lastOldScale);
+                        Debug.WriteLine("SCALE: " + instance._lastNewScale);
                     }
                 });
             }
@@ -422,10 +423,9 @@ namespace FusionEditor {
             float sx = _actor.GetScale().X;
             float sy = _actor.GetScale().Y;
 
-            _lastScale = _actor.GetBaseScale().X - 1;
-
             if (float.IsNaN(newScale) == false && newScale > 0) {
-                _lastScale = newScale;
+                _lastNewScale = newScale;
+                _lastOldScale = oldScale;
 
                 sx += newScale - oldScale;
                 sy += newScale - oldScale;
