@@ -12,6 +12,8 @@ using System.Windows;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Input;
 using System.Windows.Input;
+using System.IO;
+using System.Reflection;
 
 namespace FusionEditor {
 
@@ -25,8 +27,8 @@ namespace FusionEditor {
         private WpfMouse _mouse;
 
         private RenderManager _renderManager;
+        private Dictionary<string, Entity> _entities;
         private Entity _actor;
-        private Vector2 baseScale = Vector2.Zero;
 
         private CLNS.BoxType _selectedBoxType;
         private CLNS.BoundingBox _selectedBoundingBox;
@@ -35,9 +37,13 @@ namespace FusionEditor {
         private ICommand _saveFrameCommand;
         private Position _frameOffset;
         private Position _spriteOffset;
+        private List<string> _frames;
+        private float _lastScale;
 
         public static readonly DependencyProperty ActorProperty = DependencyProperty.Register("Actor", typeof(string), typeof(CharacterView), new PropertyMetadata("", ActorOnChangeValue));
         public static readonly DependencyProperty AnimationProperty = DependencyProperty.Register("Animation", typeof(string), typeof(CharacterView), new PropertyMetadata("", AnimationOnChangeValue));
+        public static readonly DependencyProperty FramesProperty = DependencyProperty.Register("Frames", typeof(List<string>), typeof(CharacterView));
+
         public static readonly DependencyProperty FrameProperty = DependencyProperty.Register("Frame", typeof(string), typeof(CharacterView), new PropertyMetadata("", FrameOnChangeValue));
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register("Scale", typeof(float), typeof(CharacterView), new PropertyMetadata(0f, ScaleOnChangeValue));
         public static readonly DependencyProperty ShowAttackBoxesProperty = DependencyProperty.Register("ShowAttackBoxes", typeof(bool), typeof(CharacterView), new PropertyMetadata(false, ShowAttackBoxesOnChangeValue));
@@ -89,6 +95,16 @@ namespace FusionEditor {
 
             set {
                 SetValue(AnimationProperty, value);
+            }
+        }
+
+        public List<string> Frames {
+            get {
+                return (List<string>)GetValue(FramesProperty);
+            }
+
+            set {
+                SetValue(FramesProperty, value);
             }
         }
 
@@ -218,10 +234,38 @@ namespace FusionEditor {
             }
         }
 
-        private static void ActorOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
+        async private static void ActorOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
             if (e != null) {
                 CharacterView instance = source as CharacterView;
                 String actor = (string)e.NewValue;
+
+                await Task.Run(() => { 
+                    if (string.IsNullOrEmpty(actor) == false) { 
+                        if (instance._actor != null) {
+                            instance._renderManager.RemoveEntity(instance._actor);
+                        }
+
+                        if (instance._entities.ContainsKey(actor) == false) {
+                            var asm = Assembly.LoadFrom("./FusionEngine.dll");
+                            var type = asm.GetType("FusionEngine." + actor);
+                       
+                            Entity entity = (Entity)Activator.CreateInstance(type);
+                            entity.SetAnimationType(FusionEngine.Animation.Type.NONE);
+                            entity.SetScale(entity.GetBaseScale().X - 1, entity.GetBaseScale().Y - 1);
+                            entity.SetPostion(400, 0, 200);
+                   
+                            instance._entities.Add(actor, entity);
+                            instance._renderManager.AddEntity(entity);
+                            instance._actor = entity;
+                        } else {
+                            instance._actor = instance._entities[actor];
+                            instance._renderManager.AddEntity(instance._actor);
+                        }
+
+                        instance.CheckScale(instance._lastScale, 0);
+                        Debug.WriteLine("SCALE: " + instance._lastScale);
+                    }
+                });
             }
         }
 
@@ -230,6 +274,7 @@ namespace FusionEditor {
                 CharacterView instance = source as CharacterView;
                 instance._frameOffset = new Position();
                 instance._spriteOffset = new Position();
+                instance._frames = new List<string>();
 
                 if (instance.ENABLE_ANIMATION_CHECK == true) {
                     String animation = (string)e.NewValue;
@@ -238,8 +283,12 @@ namespace FusionEditor {
                         Animation.State state;
                         bool hasState = Enum.TryParse(animation, true, out state);
 
-                        if (hasState) {
+                        if (hasState && instance._actor.HasSprite(state)) {
                             instance._actor.SetAnimationState(state);
+
+                            for (int i = 0; i < instance._actor.GetCurrentSprite().GetFrames(); i++) {
+                                instance._frames.Add(Convert.ToString(i + 1));
+                            }
 
                             instance._frameOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetCurrentFrameOffSet().X);
                             instance._frameOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetCurrentFrameOffSet().Y);
@@ -247,6 +296,7 @@ namespace FusionEditor {
                             instance._spriteOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().X);
                             instance._spriteOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().Y);
                         } else {
+                            instance._frames.Clear();
                             MessageBox.Show("Cannot find state: " + animation);
                         }
                     }
@@ -256,6 +306,7 @@ namespace FusionEditor {
                     instance.ENABLE_ANIMATION_CHECK = true;
                 }
 
+                instance.Frames = instance._frames;
                 instance.FrameOffset = instance._frameOffset;
                 instance.SpriteOffset = instance._spriteOffset;
             }
@@ -293,8 +344,6 @@ namespace FusionEditor {
                 instance.BoxItems = boxItems;
                 instance.FrameOffset = instance._frameOffset;
                 instance.SpriteOffset = instance._spriteOffset;
-
-                Debug.WriteLine("{0} {1}: ", instance.SpriteOffset.X, instance.SpriteOffset.Y);
             }
         }
 
@@ -369,6 +418,35 @@ namespace FusionEditor {
             }
         }
 
+        private void CheckScale(float newScale, float oldScale) {
+            float sx = _actor.GetScale().X;
+            float sy = _actor.GetScale().Y;
+
+            _lastScale = _actor.GetBaseScale().X - 1;
+
+            if (float.IsNaN(newScale) == false && newScale > 0) {
+                _lastScale = newScale;
+
+                sx += newScale - oldScale;
+                sy += newScale - oldScale;
+
+                if (sx <= _actor.GetBaseScale().X - 1) {
+                    sx = _actor.GetBaseScale().X - 1;
+                }
+
+                if (sy <= _actor.GetBaseScale().Y - 1) {
+                    sy = _actor.GetBaseScale().Y - 1;
+                }
+
+                _actor.SetScale(sx, sy);
+                _actor.MoveZ(-(newScale - oldScale) * 60);
+
+            } else {
+                _actor.SetScale(_actor.GetBaseScale().X - 1, _actor.GetBaseScale().Y - 1);
+                _actor.SetPostion(400, 0, 200);
+            }
+        }
+
         private static void ScaleOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
             if (e != null){
                 CharacterView instance = source as CharacterView;
@@ -378,24 +456,7 @@ namespace FusionEditor {
                 float oldScale = (float)Math.Round((float)e.OldValue);
                 float newScale = (float)Math.Round((float)e.NewValue);
 
-                if (float.IsNaN(newScale) == false && newScale > 0) {
-                    sx += newScale - oldScale;
-                    sy += newScale - oldScale;
-
-                    if (sx <= instance.baseScale.X - 1) {
-                        sx = instance.baseScale.X - 1;
-                    }
-
-                    if (sy <= instance.baseScale.Y - 1) {
-                        sy = instance.baseScale.Y - 1;
-                    }
-
-                    instance._actor.SetScale(sx, sy);
-                    instance._actor.MoveZ(-(newScale - oldScale) * 60);
-                } else {
-                    instance._actor.SetScale(instance.baseScale.X - 1, instance.baseScale.Y - 1);
-                    instance._actor.SetPostion(400, 0, 200);
-                }
+                instance.CheckScale(newScale, oldScale);
             }
         }
 
@@ -483,16 +544,9 @@ namespace FusionEditor {
             FusionEngine.System.contentManager = Content;
             FusionEngine.System.spriteBatch = _spriteBatch;
 
-            _actor = new Player_Ryo();
-            _actor.SetAnimationType(FusionEngine.Animation.Type.NONE);
-            _actor.SetFrameOffset(FusionEngine.Animation.State.ATTACK2, 2, 20, 40);
-
-            baseScale = _actor.GetScale();
-            _actor.SetScale(baseScale.X - 1, baseScale.Y - 1);
-
+            _entities = new Dictionary<string, Entity>();
             _renderManager = new RenderManager();
-            _renderManager.AddEntity(_actor);
-
+            
             // must be called after the WpfGraphicsDeviceService instance was created
             base.Initialize();
         }

@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/entity_map.dat")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/sprites/actors/leo/attack1/attack1_00.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/sprites/actors/leo/attack1/attack1_01.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/sprites/actors/leo/attack1/attack1_02.png")]

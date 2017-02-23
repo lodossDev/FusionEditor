@@ -21,65 +21,35 @@ namespace FusionEditor {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private SortedDictionary<String, SortedDictionary<String, List<String>>> actorsMap; 
+        private List<string> _entitymap; 
 
         public MainWindow() {
             InitializeComponent();
-            actorsMap = new SortedDictionary<string, SortedDictionary<string, List<string>>>();
         }
 
         private void Window_ContentRendered(object sender, EventArgs e) {
-            initActorsMap(null, null, FusionEngine.System.contentManager.RootDirectory + "//Sprites//Actors//");
+            LoadEntityMap();
+        }
 
-            foreach (String actor in actorsMap.Keys) {
+        private void LoadEntityMap() {
+            _entitymap = new List<string>();
+            StreamReader file = new StreamReader(FusionEngine.System.contentManager.RootDirectory + "//entity_map.dat");
+            string line;
+
+            while ((line = file.ReadLine()) != null) {
+                if (line.StartsWith(";") || line.StartsWith("[")) continue;
+
+                _entitymap.Add(line.Trim());
+            }
+
+            file.Close();
+
+            foreach (String actor in _entitymap) {
                 actors.Items.Add(actor);
             }
-        }
 
-        private void actors_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            animations.Items.Clear();
-
-            foreach (String animation in actorsMap[(string)actors.SelectedValue].Keys) {
+            foreach (string animation in Enum.GetNames(typeof(FusionEngine.Animation.State))) {
                 animations.Items.Add(animation);
-            }
-        }
-
-        private void animations_SelectionChanged(object sender, SelectionChangedEventArgs e){
-            frames.Items.Clear();
-
-            foreach (String frame in actorsMap[(string)actors.SelectedValue][(string)animations.SelectedValue]) {
-                frames.Items.Add(frame);
-            }
-        }
-
-        private void initActorsMap(String actor, String animation, String dir) {
-            List<string> files;
-
-            try { 
-                files = Directory.GetFiles(dir).ToList();
-            } catch(System.Exception ex) {
-                files = null;
-            }
-
-            if (files != null && files.Count != 0 && actor != null && animation != null) {
-                for (int i = 0; i < files.Count; i++) {
-                    actorsMap[actor][animation].Add(Convert.ToString(i + 1));
-                }
-            } else {
-                foreach (String path in Directory.GetDirectories(dir)) {
-                    String folderName = System.IO.Path.GetFileName(path);
-
-                    if (actor != null) {
-                        if (actorsMap[actor].ContainsKey(folderName) == false) {
-                            actorsMap[actor].Add(folderName, new List<string>());
-
-                            initActorsMap(actor, folderName, path);
-                        }
-                    } else if (actorsMap.ContainsKey(folderName) == false) {
-                        actorsMap.Add(folderName, new SortedDictionary<string, List<string>>());
-                        initActorsMap(folderName, null, path);
-                    }
-                }
             }
         }
     }

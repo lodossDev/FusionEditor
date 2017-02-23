@@ -495,9 +495,7 @@ C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Die1\Phone 01.png
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Die1\Phone 02.png
 C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Stance\Phone 01.png
-C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\FusionEditor.exe.config
-C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.exe
-C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.pdb
+C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\FusionEngine.dll
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Attack1\Attack1_00.png
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Attack1\Attack1_01.png
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Actors\Leo\Attack1\Attack1_02.png
@@ -967,6 +965,7 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Cont
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Die1\Phone 01.png
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Die1\Phone 02.png
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\Sprites\Misc\Phone\Stance\Phone 01.png
+C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\FusionEditor.exe.config
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\FusionEditor.exe
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\FusionEditor.pdb
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\FusionEngine.dll
@@ -994,4 +993,7 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\Main
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.g.resources
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.Properties.Resources.resources
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.csproj.GenerateResource.Cache
-C:\Users\ahafeez\Documents\Visual Studio 2015\Projects\FusionEditor\FusionEditor\bin\Debug\FusionEngine.dll
+C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.exe
+C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.pdb
+C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Debug\Content\entity_map.dat
+C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Debug\FusionEditor.csprojResolveAssemblyReference.cache
