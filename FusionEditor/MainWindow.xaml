@@ -26,8 +26,8 @@
                 SelectedBoxItem="{Binding SelectedValue, ElementName=comboBoxItems}" ShowBaseSprite="{Binding IsChecked, ElementName=checkBaseSprite}" Actor="{Binding SelectedValue, ElementName=actors}"/>
 
         <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="334.5,10,0,0" VerticalAlignment="Top" Width="152" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Grid.Column="1"/>
-        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="135,29,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged"/>
+        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="135,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="animations_SelectionChanged"/>
         <ComboBox x:Name="frames" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Frames, ElementName=characterView}"/>
 
         <CheckBox x:Name="checkAttackBoxes" Content="Show Attack Boxes" HorizontalAlignment="Left" Margin="197,12,0,0" VerticalAlignment="Top" Grid.Column="1"/>
@@ -55,17 +55,17 @@
         <Label x:Name="boxYLabel" Content="Y" HorizontalAlignment="Left" Height="26" Margin="356,186,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
         <TextBox x:Name="boxY" HorizontalAlignment="Left" Height="23" Margin="375,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Y, ElementName=characterView}"/>
         <Button x:Name="saveBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="389,217,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveBoxCommand, ElementName=characterView, Mode=OneWay}"/>
-        <CheckBox x:Name="checkBaseSprite" Content="Show Base Sprite" Grid.Column="1" HorizontalAlignment="Left" Margin="342,52,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBaseSprite" Content="Show Base Sprite" Grid.Column="1" HorizontalAlignment="Left" Margin="334,52,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="frameX" HorizontalAlignment="Left" Height="23" Margin="375,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding FrameOffset.X, ElementName=characterView}"/>
-        <Label x:Name="labelOffX1" Content="X" HorizontalAlignment="Left" Height="25" Margin="355,286,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
-        <Label x:Name="labelOffY" Content="Y" HorizontalAlignment="Left" Height="26" Margin="356,314,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        <Label x:Name="labelOffX1" Content="Offset X" HorizontalAlignment="Left" Height="25" Margin="321,285,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
+        <Label x:Name="labelOffY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="322,316,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
         <TextBox x:Name="frameY" HorizontalAlignment="Left" Height="23" Margin="375,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding FrameOffset.Y, ElementName=characterView}"/>
         <Button x:Name="saveBtn_Copy" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="389,432,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveFrameCommand, ElementName=characterView, Mode=OneWay}"/>
         <Label x:Name="label" Content="Box Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,76,0,0" VerticalAlignment="Top" Width="158"/>
         <Label x:Name="label_Copy" Content="Frame Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,261,0,0" VerticalAlignment="Top" Width="158"/>
         <TextBox x:Name="spriteBoxX" HorizontalAlignment="Left" Height="23" Margin="375,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.X, ElementName=characterView}"/>
-        <Label x:Name="labelSX" Content="X" HorizontalAlignment="Left" Height="25" Margin="359,373,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
-        <Label x:Name="labelSY" Content="Y" HorizontalAlignment="Left" Height="26" Margin="360,401,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        <Label x:Name="labelSX" Content="Offset X" HorizontalAlignment="Left" Height="25" Margin="321,373,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
+        <Label x:Name="labelSY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="322,402,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
         <TextBox x:Name="spriteBoxY" HorizontalAlignment="Left" Height="23" Margin="375,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.Y, ElementName=characterView}"/>
         <Label x:Name="label_Copy1" Content="Sprite Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,343,0,0" VerticalAlignment="Top" Width="158"/>
     </Grid>

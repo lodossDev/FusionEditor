@@ -235,12 +235,13 @@ namespace FusionEditor {
             }
         }
 
-        async private static void ActorOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
+        private async static void ActorOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
             if (e != null) {
                 CharacterView instance = source as CharacterView;
                 String actor = (string)e.NewValue;
+                instance._frames = new List<string>();
 
-                await Task.Run(() => { 
+                await Task.Run(() => {
                     if (string.IsNullOrEmpty(actor) == false) { 
                         if (instance._actor != null) {
                             instance._renderManager.RemoveEntity(instance._actor);
@@ -252,21 +253,30 @@ namespace FusionEditor {
                        
                             Entity entity = (Entity)Activator.CreateInstance(type);
                             entity.SetAnimationType(FusionEngine.Animation.Type.NONE);
+                            entity.SetAnimationState(FusionEngine.Animation.State.STANCE);
                             entity.SetScale(entity.GetBaseScale().X - 1, entity.GetBaseScale().Y - 1);
                             entity.SetPostion(400, 0, 200);
                    
                             instance._entities.Add(actor, entity);
                             instance._renderManager.AddEntity(entity);
                             instance._actor = entity;
+                            
                         } else {
                             instance._actor = instance._entities[actor];
+                            instance._actor.SetAnimationState(FusionEngine.Animation.State.STANCE);
                             instance._renderManager.AddEntity(instance._actor);
                         }
 
                         instance.CheckScale(instance._lastNewScale, instance._lastOldScale);
-                        Debug.WriteLine("SCALE: " + instance._lastNewScale);
                     }
                 });
+
+                if (instance._actor != null) {
+                    DependencyPropertyChangedEventArgs args = new DependencyPropertyChangedEventArgs(AnimationProperty, "STANCE", "STANCE");
+                    AnimationOnChangeValue(source, args);
+                }
+
+                instance.Frames = instance._frames;
             }
         }
 
@@ -277,28 +287,35 @@ namespace FusionEditor {
                 instance._spriteOffset = new Position();
                 instance._frames = new List<string>();
 
+                Debug.WriteLine("instance.ENABLE_ANIMATION_CHECK: " + instance.ENABLE_ANIMATION_CHECK);
+
                 if (instance.ENABLE_ANIMATION_CHECK == true) {
                     String animation = (string)e.NewValue;
+                    Debug.WriteLine("animation: " + animation);
 
                     if (string.IsNullOrEmpty(animation) == false) { 
                         Animation.State state;
                         bool hasState = Enum.TryParse(animation, true, out state);
 
-                        if (hasState && instance._actor.HasSprite(state)) {
-                            instance._actor.SetAnimationState(state);
+                        if (instance._actor != null) {
 
-                            for (int i = 0; i < instance._actor.GetCurrentSprite().GetFrames(); i++) {
-                                instance._frames.Add(Convert.ToString(i + 1));
+                            if (hasState && instance._actor.HasSprite(state)) {
+                                instance._actor.SetAnimationState(state);
+
+                                for (int i = 0; i < instance._actor.GetCurrentSprite().GetFrames(); i++) {
+                                    instance._frames.Add(Convert.ToString(i + 1));
+                                }
+
+                                instance._frameOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetCurrentFrameOffSet().X);
+                                instance._frameOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetCurrentFrameOffSet().Y);
+
+                                instance._spriteOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().X);
+                                instance._spriteOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().Y);
+
+                            } else {
+                                instance._frames.Clear();
+                                MessageBox.Show("Cannot find state: " + animation);
                             }
-
-                            instance._frameOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetCurrentFrameOffSet().X);
-                            instance._frameOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetCurrentFrameOffSet().Y);
-
-                            instance._spriteOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().X);
-                            instance._spriteOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().Y);
-                        } else {
-                            instance._frames.Clear();
-                            MessageBox.Show("Cannot find state: " + animation);
                         }
                     }
                 }

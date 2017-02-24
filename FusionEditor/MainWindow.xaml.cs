@@ -52,5 +52,13 @@ namespace FusionEditor {
                 animations.Items.Add(animation);
             }
         }
+
+        private void actors_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            animations.SelectedIndex = 0;
+        }
+
+        private void animations_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            frames.SelectedIndex = 0;
+        }
     }
 }
