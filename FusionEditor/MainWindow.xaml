@@ -9,6 +9,7 @@
         Title="Character Viewer" Height="800" Width="1024"
         ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
+        Icon="./FusionIcon.ico"
         >
     <Grid >
         <Grid.ColumnDefinitions>
@@ -23,7 +24,7 @@
                 ShowAttackBoxes="{Binding IsChecked, ElementName=checkAttackBoxes}" ShowBodyBoxes="{Binding IsChecked, ElementName=checkBodyBoxes}" 
                 ShowBoundsBoxes="{Binding IsChecked, ElementName=checkBoundsBoxes}"  
                 SelectedBoxType="{Binding SelectedValue, ElementName=comboBoxType}"            
-                SelectedBoxItem="{Binding SelectedValue, ElementName=comboBoxItems}" ShowBaseSprite="{Binding IsChecked, ElementName=checkBaseSprite}" Actor="{Binding SelectedValue, ElementName=actors}"/>
+                SelectedBoxItem="{Binding SelectedValue, ElementName=comboBoxItems}" ShowBaseSprite="{Binding IsChecked, ElementName=checkBaseSprite}" Actor="{Binding SelectedValue, ElementName=actors, IsAsync=True}"/>
 
         <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="334.5,10,0,0" VerticalAlignment="Top" Width="152" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Grid.Column="1"/>
         <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged"/>
@@ -38,14 +39,14 @@
         <Label x:Name="animationsLabel" Content="Animations" HorizontalAlignment="Left" Margin="154,2,0,0" VerticalAlignment="Top"/>
         <Label x:Name="framesLabel" Content="Frames" HorizontalAlignment="Left" Margin="290,2,0,0" VerticalAlignment="Top"/>
 
-        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="385,29,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content">
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="436,29,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content" Grid.ColumnSpan="2">
             <ComboBoxItem >Attack Box</ComboBoxItem>
             <ComboBoxItem >Body Box</ComboBoxItem>
         </ComboBox>
 
-        <Label x:Name="boxTypeLabel" Content="Box Type" HorizontalAlignment="Left" Margin="413,2,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxItems" Grid.Column="1" HorizontalAlignment="Left" Margin="4,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BoxItems, ElementName=characterView}"/>
-        <Label x:Name="boxItemsLabel" Content="Box Items" HorizontalAlignment="Left" Margin="24,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="boxTypeLabel" Content="Box Type" HorizontalAlignment="Left" Margin="464,2,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="comboBoxItems" Grid.Column="1" HorizontalAlignment="Left" Margin="55,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BoxItems, ElementName=characterView}"/>
+        <Label x:Name="boxItemsLabel" Content="Box Items" HorizontalAlignment="Left" Margin="75,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox x:Name="boxWidth" HorizontalAlignment="Left" Height="23" Margin="375,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Width, ElementName=characterView}"/>
         <Label x:Name="boxWidthLabel" Content="Width" HorizontalAlignment="Left" Height="25" Margin="329,101,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="45"/>
         <Label x:Name="boxHeightLabel" Content="Height" HorizontalAlignment="Left" Height="26" Margin="325,128,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="52"/>
@@ -68,5 +69,15 @@
         <Label x:Name="labelSY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="322,402,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
         <TextBox x:Name="spriteBoxY" HorizontalAlignment="Left" Height="23" Margin="375,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.Y, ElementName=characterView}"/>
         <Label x:Name="label_Copy1" Content="Sprite Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,343,0,0" VerticalAlignment="Top" Width="158"/>
+        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left"  Margin="392,20,0,0" VerticalAlignment="Top" ValueChanged="scrollBar_ValueChanged" RenderTransformOrigin="0.529,0.543" Height="39" Width="22" SmallChange="1" Minimum="-10000000" Maximum="10000000">
+            <ScrollBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform X="-2.471" Y="-1.485"/>
+                </TransformGroup>
+            </ScrollBar.RenderTransform>
+        </ScrollBar>
     </Grid>
 </Window>

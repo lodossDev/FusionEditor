@@ -60,5 +60,12 @@ namespace FusionEditor {
         private void animations_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             frames.SelectedIndex = 0;
         }
+
+        private void scrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) { 
+            int step = (int)e.NewValue - (int)e.OldValue;
+
+            frames.SelectedIndex += step;
+            if (frames.SelectedIndex < 0)frames.SelectedIndex = 0;
+        }
     }
 }
