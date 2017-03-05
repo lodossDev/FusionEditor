@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:FusionEditor"
         xmlns:FusionEditor="clr-namespace:FusionEditor"
         mc:Ignorable="d"
-        Title="Character Viewer" Height="800" Width="1024"
+        Title="Character Viewer" Height="941" Width="1024"
         ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
         Icon="./FusionIcon.ico"
         >
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="511*"/>
-            <ColumnDefinition Width="506*"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="949*"/>
         </Grid.ColumnDefinitions>
 
         <FusionEditor:CharacterView Width="800" x:Name="characterView" Margin="17,85,201,17" Grid.ColumnSpan="2"
@@ -26,50 +26,50 @@
                 SelectedBoxType="{Binding SelectedValue, ElementName=comboBoxType}"            
                 SelectedBoxItem="{Binding SelectedValue, ElementName=comboBoxItems}" ShowBaseSprite="{Binding IsChecked, ElementName=checkBaseSprite}" Actor="{Binding SelectedValue, ElementName=actors, IsAsync=True}"/>
 
-        <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="334.5,10,0,0" VerticalAlignment="Top" Width="152" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Grid.Column="1"/>
-        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged"/>
-        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="135,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="animations_SelectionChanged"/>
-        <ComboBox x:Name="frames" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Frames, ElementName=characterView}"/>
+        <Slider x:Name="scaleSlider" HorizontalAlignment="Left" Margin="777,10,0,0" VerticalAlignment="Top" Width="152" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Grid.Column="1"/>
+        <ComboBox x:Name="actors" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="actors_SelectionChanged" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="animations" HorizontalAlignment="Left" Margin="66,29,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="animations_SelectionChanged" Grid.Column="1"/>
+        <ComboBox x:Name="frames" HorizontalAlignment="Left" Margin="191,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Frames, ElementName=characterView}" Grid.Column="1"/>
 
-        <CheckBox x:Name="checkAttackBoxes" Content="Show Attack Boxes" HorizontalAlignment="Left" Margin="197,12,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <CheckBox x:Name="checkBodyBoxes" Content="Show Body Boxes" HorizontalAlignment="Left" Margin="197,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <CheckBox x:Name="checkBoundsBoxes" Content="Show Bounds Boxes" HorizontalAlignment="Left" Margin="197,52,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox x:Name="checkAttackBoxes" Content="Show Attack Boxes" HorizontalAlignment="Left" Margin="640,12,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox x:Name="checkBodyBoxes" Content="Show Body Boxes" HorizontalAlignment="Left" Margin="640,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox x:Name="checkBoundsBoxes" Content="Show Bounds Boxes" HorizontalAlignment="Left" Margin="640,52,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <Label x:Name="entityLabel" Content="Entity" HorizontalAlignment="Left" Margin="49,2,0,0" VerticalAlignment="Top" Width="41"/>
-        <Label x:Name="animationsLabel" Content="Animations" HorizontalAlignment="Left" Margin="154,2,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="framesLabel" Content="Frames" HorizontalAlignment="Left" Margin="290,2,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="entityLabel" Content="Entity" HorizontalAlignment="Left" Margin="49,2,0,0" VerticalAlignment="Top" Width="41" Grid.ColumnSpan="2"/>
+        <Label x:Name="animationsLabel" Content="Animations" HorizontalAlignment="Left" Margin="85,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="framesLabel" Content="Frames" HorizontalAlignment="Left" Margin="221,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="436,29,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content" Grid.ColumnSpan="2">
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="367,29,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content" Grid.Column="1">
             <ComboBoxItem >Attack Box</ComboBoxItem>
             <ComboBoxItem >Body Box</ComboBoxItem>
         </ComboBox>
 
-        <Label x:Name="boxTypeLabel" Content="Box Type" HorizontalAlignment="Left" Margin="464,2,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="comboBoxItems" Grid.Column="1" HorizontalAlignment="Left" Margin="55,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BoxItems, ElementName=characterView}"/>
-        <Label x:Name="boxItemsLabel" Content="Box Items" HorizontalAlignment="Left" Margin="75,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="boxWidth" HorizontalAlignment="Left" Height="23" Margin="375,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Width, ElementName=characterView}"/>
-        <Label x:Name="boxWidthLabel" Content="Width" HorizontalAlignment="Left" Height="25" Margin="329,101,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="45"/>
-        <Label x:Name="boxHeightLabel" Content="Height" HorizontalAlignment="Left" Height="26" Margin="325,128,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="52"/>
-        <TextBox x:Name="boxHeight" HorizontalAlignment="Left" Height="23" Margin="375,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Height, ElementName=characterView}"/>
-        <TextBox x:Name="boxX" HorizontalAlignment="Left" Height="23" Margin="375,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.X, ElementName=characterView}"/>
-        <Label x:Name="boxXLabel" Content="X" HorizontalAlignment="Left" Height="25" Margin="355,158,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
-        <Label x:Name="boxYLabel" Content="Y" HorizontalAlignment="Left" Height="26" Margin="356,186,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
-        <TextBox x:Name="boxY" HorizontalAlignment="Left" Height="23" Margin="375,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Y, ElementName=characterView}"/>
-        <Button x:Name="saveBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="389,217,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveBoxCommand, ElementName=characterView, Mode=OneWay}"/>
-        <CheckBox x:Name="checkBaseSprite" Content="Show Base Sprite" Grid.Column="1" HorizontalAlignment="Left" Margin="334,52,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="frameX" HorizontalAlignment="Left" Height="23" Margin="375,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding FrameOffset.X, ElementName=characterView}"/>
-        <Label x:Name="labelOffX1" Content="Offset X" HorizontalAlignment="Left" Height="25" Margin="321,285,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
-        <Label x:Name="labelOffY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="322,316,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
-        <TextBox x:Name="frameY" HorizontalAlignment="Left" Height="23" Margin="375,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding FrameOffset.Y, ElementName=characterView}"/>
-        <Button x:Name="saveBtn_Copy" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="389,432,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveFrameCommand, ElementName=characterView, Mode=OneWay}"/>
-        <Label x:Name="label" Content="Box Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,76,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="label_Copy" Content="Frame Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,261,0,0" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="spriteBoxX" HorizontalAlignment="Left" Height="23" Margin="375,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.X, ElementName=characterView}"/>
-        <Label x:Name="labelSX" Content="Offset X" HorizontalAlignment="Left" Height="25" Margin="321,373,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
-        <Label x:Name="labelSY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="322,402,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
-        <TextBox x:Name="spriteBoxY" HorizontalAlignment="Left" Height="23" Margin="375,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.Y, ElementName=characterView}"/>
-        <Label x:Name="label_Copy1" Content="Sprite Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="307,343,0,0" VerticalAlignment="Top" Width="158"/>
-        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left"  Margin="392,20,0,0" VerticalAlignment="Top" ValueChanged="scrollBar_ValueChanged" RenderTransformOrigin="0.529,0.543" Height="39" Width="22" SmallChange="1" Minimum="-10000000" Maximum="10000000">
+        <Label x:Name="boxTypeLabel" Content="Box Type" HorizontalAlignment="Left" Margin="395,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ComboBox x:Name="comboBoxItems" Grid.Column="1" HorizontalAlignment="Left" Margin="498,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BoxItems, ElementName=characterView}"/>
+        <Label x:Name="boxItemsLabel" Content="Box Items" HorizontalAlignment="Left" Margin="518,2,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="boxWidth" HorizontalAlignment="Left" Height="23" Margin="818,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Width, ElementName=characterView}"/>
+        <Label x:Name="boxWidthLabel" Content="Width" HorizontalAlignment="Left" Height="25" Margin="772,101,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="45"/>
+        <Label x:Name="boxHeightLabel" Content="Height" HorizontalAlignment="Left" Height="26" Margin="768,128,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold" Width="52"/>
+        <TextBox x:Name="boxHeight" HorizontalAlignment="Left" Height="23" Margin="818,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Height, ElementName=characterView}"/>
+        <TextBox x:Name="boxX" HorizontalAlignment="Left" Height="23" Margin="818,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.X, ElementName=characterView}"/>
+        <Label x:Name="boxXLabel" Content="X" HorizontalAlignment="Left" Height="25" Margin="798,158,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
+        <Label x:Name="boxYLabel" Content="Y" HorizontalAlignment="Left" Height="26" Margin="799,186,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        <TextBox x:Name="boxY" HorizontalAlignment="Left" Height="23" Margin="818,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SelectedRectItem.Y, ElementName=characterView}"/>
+        <Button x:Name="saveBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="832,216,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveBoxCommand, ElementName=characterView, Mode=OneWay}"/>
+        <CheckBox x:Name="checkBaseSprite" Content="Show Base Sprite" Grid.Column="1" HorizontalAlignment="Left" Margin="777,52,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="frameX" HorizontalAlignment="Left" Height="23" Margin="818,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding FrameOffset.X, ElementName=characterView}"/>
+        <Label x:Name="labelOffX1" Content="Offset X" HorizontalAlignment="Left" Height="25" Margin="764,271,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
+        <Label x:Name="labelOffY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="765,302,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        <TextBox x:Name="frameY" HorizontalAlignment="Left" Height="23" Margin="818,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding FrameOffset.Y, ElementName=characterView}"/>
+        <Button x:Name="saveBtn_Copy" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="832,417,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveFrameCommand, ElementName=characterView, Mode=OneWay}"/>
+        <Label x:Name="label" Content="Box Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="750,76,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="label_Copy" Content="Frame Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="750,247,0,0" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="spriteBoxX" HorizontalAlignment="Left" Height="23" Margin="818,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.X, ElementName=characterView}"/>
+        <Label x:Name="labelSX" Content="Offset X" HorizontalAlignment="Left" Height="25" Margin="764,359,0,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.941,0.56" FontWeight="Bold"/>
+        <Label x:Name="labelSY" Content="Offset Y" HorizontalAlignment="Left" Height="26" Margin="765,388,0,0" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        <TextBox x:Name="spriteBoxY" HorizontalAlignment="Left" Height="23" Margin="818,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1" Text="{Binding SpriteOffset.Y, ElementName=characterView}"/>
+        <Label x:Name="label_Copy1" Content="Sprite Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="750,329,0,0" VerticalAlignment="Top" Width="158"/>
+        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left"  Margin="323,20,0,0" VerticalAlignment="Top" ValueChanged="scrollBar_ValueChanged" RenderTransformOrigin="0.529,0.543" Height="39" Width="22" SmallChange="1" Minimum="-10000000" Maximum="10000000" Grid.Column="1">
             <ScrollBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -79,5 +79,25 @@
                 </TransformGroup>
             </ScrollBar.RenderTransform>
         </ScrollBar>
+        <Button x:Name="btnAddBox" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="367,55,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.547,0.5" Command="{Binding AddBoxCommand, ElementName=characterView, Mode=OneWay}"/>
+        <Label x:Name="labelBaseProp" Content="Base Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="750,443,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label x:Name="baseX" Content="Offset X" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="764,474,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <Label x:Name="baseY" Content="Offset Y" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="764,506,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <Button x:Name="btnRemoveBox" Content="Remove" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="429,55,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.547,0.5" Command="{Binding RemoveBoxCommand, ElementName=characterView, Mode=OneWay}"/>
+        <TextBox x:Name="baseTextX" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="818,474,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Text="{Binding BaseOffset.X, ElementName=characterView}"/>
+        <TextBox x:Name="baseTextY" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="818,507,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" TextChanged="textBox1_TextChanged" Text="{Binding BaseOffset.Y, ElementName=characterView}"/>
+        <Label x:Name="labelPosition" Content="Position Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="750,686,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="posXLabel" Content="X" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="800,717,0,0" VerticalAlignment="Top" Width="22" FontWeight="Bold"/>
+        <Label x:Name="posyLabel" Content="Y" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="801,749,0,0" VerticalAlignment="Top" Width="21" FontWeight="Bold"/>
+        <TextBox x:Name="posTextX" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="818,717,0,0" TextWrapping="Wrap" Text="{Binding Position.X, ElementName=characterView}" VerticalAlignment="Top" Width="71"/>
+        <TextBox x:Name="posTextY" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="818,750,0,0" TextWrapping="Wrap" Text="{Binding Position.Y, ElementName=characterView}" VerticalAlignment="Top" Width="71" TextChanged="textBox1_TextChanged"/>
+        <Button x:Name="baseSave" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="832,537,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveBaseCommand, ElementName=characterView, Mode=OneWay}"/>
+        <Button x:Name="posSave" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="832,780,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SavePositionCommand, ElementName=characterView, Mode=OneWay}"/>
+        <Label x:Name="labelShadow" Content="Shadow Properties" Grid.Column="1" HorizontalAlignment="Left" Margin="750,568,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="shadowPosXLabel" Content="Offset X" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="764,599,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <Label x:Name="shadowPosYLabel" Content="Offset Y" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="765,631,0,0" VerticalAlignment="Top" Width="57" FontWeight="Bold"/>
+        <TextBox x:Name="shadowX" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="818,599,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="71"/>
+        <TextBox x:Name="shadowY" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="818,632,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="71" TextChanged="textBox1_TextChanged"/>
+        <Button x:Name="shadowSave" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="832,662,0,0" VerticalAlignment="Top" Width="47" Command="{Binding SaveFrameCommand, ElementName=characterView, Mode=OneWay}"/>
     </Grid>
 </Window>

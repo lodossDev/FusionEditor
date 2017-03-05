@@ -36,8 +36,16 @@ namespace FusionEditor {
         private CLNS.BoxType _selectedBoxType;
         private CLNS.BoundingBox _selectedBoundingBox;
         private BoundingBox _selectedRectItem;
+
+        private ICommand _addBoxCommand;
+        private ICommand _removeBoxCommand;
         private ICommand _saveBoxCommand;
         private ICommand _saveFrameCommand;
+        private ICommand _saveBaseCommand;
+        private ICommand _savePositionCommand;
+
+        private Position _position;
+        private Position _baseOffset;
         private Position _frameOffset;
         private Position _spriteOffset;
         private List<string> _frames;
@@ -59,12 +67,13 @@ namespace FusionEditor {
         public static readonly DependencyProperty ShowBaseSpriteProperty = DependencyProperty.Register("ShowBaseSprite", typeof(bool), typeof(CharacterView), new PropertyMetadata(false, ShowBaseSpriteOnChangeValue));
         public static readonly DependencyProperty CurrentFrameOffsetProperty = DependencyProperty.Register("FrameOffset", typeof(Position), typeof(CharacterView));
         public static readonly DependencyProperty CurrentSrpiteOffsetProperty = DependencyProperty.Register("SpriteOffset", typeof(Position), typeof(CharacterView));
-
+        public static readonly DependencyProperty BaseOffsetProperty = DependencyProperty.Register("BaseOffset", typeof(Position), typeof(CharacterView));
+        public static readonly DependencyProperty PositionProperty = DependencyProperty.Register("Position", typeof(Position), typeof(CharacterView));
 
         public ICommand SaveBoxCommand {
             get {
                 if (_saveBoxCommand == null) {
-                    _saveBoxCommand = new RelayCommand(param => this.UpdateSelectedBox(), param => this.CanUpdateSelectedBox());
+                    _saveBoxCommand = new RelayCommand(param => this.UpdateSelectedBox(), param => { return true; });
                 }
 
                 return _saveBoxCommand;
@@ -74,10 +83,50 @@ namespace FusionEditor {
         public ICommand SaveFrameCommand {
             get {
                 if (_saveFrameCommand == null) {
-                    _saveFrameCommand = new RelayCommand(param => this.UpdateFrameOffset(), param => this.CanUpdateFrameOffset());
+                    _saveFrameCommand = new RelayCommand(param => this.UpdateFrameOffset(), param => { return true; });
                 }
 
                 return _saveFrameCommand;
+            }
+        }
+
+        public ICommand AddBoxCommand {
+            get {
+                if (_addBoxCommand == null) {
+                    _addBoxCommand = new RelayCommand(param => this.AddBox(), param => { return true; });
+                }
+
+                return _addBoxCommand;
+            }
+        }
+
+        public ICommand RemoveBoxCommand {
+            get {
+                if (_removeBoxCommand == null) {
+                    _removeBoxCommand = new RelayCommand(param => this.RemoveBox(), param => { return true; });
+                }
+
+                return _removeBoxCommand;
+            }
+        }
+
+        public ICommand SaveBaseCommand {
+            get {
+                if (_saveBaseCommand == null) {
+                    _saveBaseCommand = new RelayCommand(param => this.SaveBaseOffset(), param => { return true; });
+                }
+
+                return _saveBaseCommand;
+            }
+        }
+
+        public ICommand SavePositionCommand {
+            get {
+                if (_savePositionCommand == null) {
+                    _savePositionCommand = new RelayCommand(param => this.SavePosition(), param => { return true; });
+                }
+
+                return _savePositionCommand;
             }
         }
 
@@ -213,6 +262,18 @@ namespace FusionEditor {
             }
         }
 
+        public Position Position {
+            get {
+                return (Position)GetValue(PositionProperty);
+            }
+
+            set {
+                if (Position != value) {
+                    SetValue(PositionProperty, value);
+                }
+            }
+        }
+
         public Position FrameOffset {
             get {
                 return (Position)GetValue(CurrentFrameOffsetProperty);
@@ -237,11 +298,25 @@ namespace FusionEditor {
             }
         }
 
+        public Position BaseOffset {
+            get {
+                return (Position)GetValue(BaseOffsetProperty);
+            }
+
+            set {
+                if (BaseOffset != value) {
+                    SetValue(BaseOffsetProperty, value);
+                }
+            }
+        }
+
         private static void ActorOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
             if (e != null) {
                 CharacterView instance = source as CharacterView;
                 String actor = (string)e.NewValue;
                 instance._frames = new List<string>();
+                instance._baseOffset = new Position();
+                instance._position = new Position();
 
                 if (string.IsNullOrEmpty(actor) == false) { 
                     if (instance._actor != null) {
@@ -269,6 +344,10 @@ namespace FusionEditor {
                     instance._actor.SetPostion(400, 0, 200);
                     instance._actor.SetScale(instance._actor.GetBaseScale().X - 1, instance._actor.GetBaseScale().Y - 1);
                     instance.CheckScale(instance.Scale, 0);
+                    instance._baseOffset.X = (int)instance._actor.GetBaseOffsetX();
+                    instance._baseOffset.Y = (int)instance._actor.GetBaseOffsetY();
+                    instance._position.X = (int)instance._actor.GetPosX();
+                    instance._position.Y = (int)instance._actor.GetPosZ();
                 }
 
                 if (instance._actor != null) {
@@ -277,6 +356,8 @@ namespace FusionEditor {
                 }
 
                 instance.Frames = instance._frames;
+                instance.BaseOffset = instance._baseOffset;
+                instance.Position = instance._position;
             }
         }
 
@@ -535,24 +616,52 @@ namespace FusionEditor {
             }
         }
 
-        private bool CanUpdateSelectedBox() {
-            return true;
-        }
-
         private void UpdateSelectedBox() {
             if(_selectedBoundingBox != null) { 
                 _selectedBoundingBox.SetBase(SelectedRectItem.Width, SelectedRectItem.Height, SelectedRectItem.X, SelectedRectItem.Y);
             }
         }
 
-        private bool CanUpdateFrameOffset() {
-            return true;
-        }
-
         private void UpdateFrameOffset() {
             if (_actor != null) { 
                 _actor.SetFrameOffset(_actor.GetCurrentAnimationState(), _actor.GetCurrentFrame() + 1, FrameOffset.X, FrameOffset.Y);
                 _actor.SetSpriteOffSet(_actor.GetCurrentAnimationState(), SpriteOffset.X, SpriteOffset.Y);
+            }
+        }
+
+        private void RemoveBox() {
+            if (_actor != null && string.IsNullOrEmpty(SelectedBoxType) == false 
+                    && string.IsNullOrEmpty(SelectedBoxItem) == false
+                    && _selectedBoundingBox != null) { 
+                
+                List<CLNS.BoundingBox> boxes =  _actor.GetCurrentSprite().GetBaseBoxes()[_actor.GetCurrentFrame()];
+                boxes.Remove(_selectedBoundingBox);
+
+                _selectedBoundingBox = null;
+
+               DependencyPropertyChangedEventArgs args = new DependencyPropertyChangedEventArgs(BoxItemsProperty, null, SelectedBoxType);
+               BoxTypeOnChangeValue(this, args);
+            }
+        }
+
+        private void AddBox() {
+            if (_actor != null && string.IsNullOrEmpty(SelectedBoxType) == false) {
+                _actor.AddBox(_actor.GetCurrentAnimationState(), _actor.GetCurrentSpriteFrame() + 1, new CLNS.BoundingBox(_selectedBoxType, 120, 120, 0, 0, _actor.GetCurrentSpriteFrame() + 1));
+
+               DependencyPropertyChangedEventArgs args = new DependencyPropertyChangedEventArgs(BoxItemsProperty, null, SelectedBoxType);
+               BoxTypeOnChangeValue(this, args);
+            }
+        }
+
+        private void SaveBaseOffset() {
+            if (_actor != null) {
+                _actor.SetBaseOffset(_baseOffset.X, _baseOffset.Y);
+            }
+        }
+
+        private void SavePosition() {
+            if (_actor != null) {
+                _actor.SetPostion(_position.X,0, _position.Y);
             }
         }
 

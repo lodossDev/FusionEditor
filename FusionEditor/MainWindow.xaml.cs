@@ -67,5 +67,9 @@ namespace FusionEditor {
             frames.SelectedIndex += step;
             if (frames.SelectedIndex < 0)frames.SelectedIndex = 0;
         }
+
+        private void textBox1_TextChanged(object sender, TextChangedEventArgs e) {
+
+        }
     }
 }
