@@ -341,7 +341,7 @@ namespace FusionEditor {
                         instance._renderManager.AddEntity(instance._actor);
                     }
 
-                    instance._actor.SetPostion(400, 0, 200);
+                    instance._actor.SetPostion(instance.Position.X, 0, instance.Position.Y);
                     instance._actor.SetScale(instance._actor.GetBaseScale().X - 1, instance._actor.GetBaseScale().Y - 1);
                     instance.CheckScale(instance.Scale, 0);
                     instance._baseOffset.X = (int)instance._actor.GetBaseOffsetX();
@@ -543,7 +543,7 @@ namespace FusionEditor {
 
                 } else {
                     _actor.SetScale(_actor.GetBaseScale().X - 1, _actor.GetBaseScale().Y - 1);
-                    _actor.SetPostion(400, 0, 200);
+                    _actor.SetPostion(Position.X, 0, Position.Y);
                 }
             }
         }
@@ -684,6 +684,9 @@ namespace FusionEditor {
             _entities = new ConcurrentDictionary<string, Entity>();
             _renderManager = new RenderManager();
             _hasSelected = false;
+
+            Position.X = 400;
+            Position.Y = 200;
             
             // must be called after the WpfGraphicsDeviceService instance was created
             base.Initialize();
