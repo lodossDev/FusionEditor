@@ -476,7 +476,6 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\Sh
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\MonoGame.Framework.xml
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\MonoGame.Framework.WpfInterop.xml
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\SharpDX.Direct3D9.xml
-C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Release\FusionEditor.csprojResolveAssemblyReference.cache
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Release\MainWindow.g.cs
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Release\App.g.cs
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Release\FusionEditor_Content.g.cs
@@ -555,3 +554,4 @@ C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\Co
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\Content\Sprites\Actors\Bred\WALK_TOWARDS\WALK06.xnb
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\Content\Sprites\Actors\Ryo\ryo.png
 C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\bin\Release\Content\Sprites\Actors\Ryo\ryo.txt
+C:\Users\lodoss118\Desktop\FusionEditor\FusionEditor\FusionEditor\obj\Release\FusionEditor.csprojResolveAssemblyReference.cache

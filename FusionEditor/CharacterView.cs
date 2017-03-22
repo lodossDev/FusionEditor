@@ -43,11 +43,13 @@ namespace FusionEditor {
         private ICommand _saveFrameCommand;
         private ICommand _saveBaseCommand;
         private ICommand _savePositionCommand;
+        private ICommand _saveShadowCommand;
 
         private Position _position;
         private Position _baseOffset;
         private Position _frameOffset;
         private Position _spriteOffset;
+        private Position _shadowOffset;
         private List<string> _frames;
         private Assembly _fusionEngineASM;
         private bool _hasSelected;
@@ -69,6 +71,8 @@ namespace FusionEditor {
         public static readonly DependencyProperty CurrentSrpiteOffsetProperty = DependencyProperty.Register("SpriteOffset", typeof(Position), typeof(CharacterView));
         public static readonly DependencyProperty BaseOffsetProperty = DependencyProperty.Register("BaseOffset", typeof(Position), typeof(CharacterView));
         public static readonly DependencyProperty PositionProperty = DependencyProperty.Register("Position", typeof(Position), typeof(CharacterView));
+        public static readonly DependencyProperty ShadowOffsetProperty = DependencyProperty.Register("ShadowOffset", typeof(Position), typeof(CharacterView));
+
 
         public ICommand SaveBoxCommand {
             get {
@@ -127,6 +131,16 @@ namespace FusionEditor {
                 }
 
                 return _savePositionCommand;
+            }
+        }
+
+        public ICommand SaveShadowCommand {
+            get {
+                if (_saveShadowCommand == null) {
+                    _saveShadowCommand = new RelayCommand(param => this.SaveShadowOffset(), param => { return true; });
+                }
+
+                return _saveShadowCommand;
             }
         }
 
@@ -286,6 +300,18 @@ namespace FusionEditor {
             }
         }
 
+        public Position ShadowOffset {
+            get {
+                return (Position)GetValue(ShadowOffsetProperty);
+            }
+
+            set {
+                if (ShadowOffset != value) {
+                    SetValue(ShadowOffsetProperty, value);
+                }
+            }
+        }
+
         public Position SpriteOffset {
             get {
                 return (Position)GetValue(CurrentSrpiteOffsetProperty);
@@ -316,12 +342,16 @@ namespace FusionEditor {
                 String actor = (string)e.NewValue;
                 instance._frames = new List<string>();
                 instance._baseOffset = new Position();
+                instance._shadowOffset = new Position();
                 instance._position = new Position();
 
                 if (string.IsNullOrEmpty(actor) == false) { 
                     if (instance._actor != null) {
                         instance._renderManager.RemoveEntity(instance._actor);
                     }
+
+                    instance._position.X = 400;
+                    instance._position.Y = 200;
 
                     if (instance._entities.ContainsKey(actor) == false) {
                         if (instance._fusionEngineASM != null) { 
@@ -341,23 +371,25 @@ namespace FusionEditor {
                         instance._renderManager.AddEntity(instance._actor);
                     }
 
-                    instance._actor.SetPostion(instance.Position.X, 0, instance.Position.Y);
-                    instance._actor.SetScale(instance._actor.GetBaseScale().X - 1, instance._actor.GetBaseScale().Y - 1);
-                    instance.CheckScale(instance.Scale, 0);
                     instance._baseOffset.X = (int)instance._actor.GetBaseOffsetX();
                     instance._baseOffset.Y = (int)instance._actor.GetBaseOffsetY();
-                    instance._position.X = (int)instance._actor.GetPosX();
-                    instance._position.Y = (int)instance._actor.GetPosZ();
-                }
-
-                if (instance._actor != null) {
-                    DependencyPropertyChangedEventArgs args = new DependencyPropertyChangedEventArgs(AnimationProperty, null, "STANCE");
-                    AnimationOnChangeValue(source, args);
+                    instance._shadowOffset.X = (int)instance._actor.GetCurrentSprite().GetShadowOffsetX();
+                    instance._shadowOffset.Y = (int)instance._actor.GetCurrentSprite().GetShadowOffsetY();
                 }
 
                 instance.Frames = instance._frames;
                 instance.BaseOffset = instance._baseOffset;
                 instance.Position = instance._position;
+                instance.ShadowOffset = instance._shadowOffset;
+
+                if (instance._actor != null) { 
+                    instance._actor.SetPostion(instance.Position.X, 0, instance.Position.Y);
+                    instance._actor.SetScale(instance._actor.GetBaseScale().X - 1, instance._actor.GetBaseScale().Y - 1);
+                    instance.CheckScale(instance.Scale, 0);
+
+                    DependencyPropertyChangedEventArgs args = new DependencyPropertyChangedEventArgs(AnimationProperty, null, "STANCE");
+                    AnimationOnChangeValue(source, args);
+                }
             }
         }
 
@@ -367,6 +399,7 @@ namespace FusionEditor {
                 instance._frameOffset = new Position();
                 instance._spriteOffset = new Position();
                 instance._frames = new List<string>();
+                instance._shadowOffset = new Position();
 
                 if (instance._actor != null 
                         && instance.ENABLE_ANIMATION_CHECK == true) {
@@ -392,6 +425,9 @@ namespace FusionEditor {
                                 instance._spriteOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().X);
                                 instance._spriteOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().Y);
 
+                                instance._shadowOffset.X = (int)instance._actor.GetCurrentSprite().GetShadowOffsetX();
+                                instance._shadowOffset.Y = (int)instance._actor.GetCurrentSprite().GetShadowOffsetY();
+
                             } else {
                                 instance._frames.Clear();
                                 MessageBox.Show("Cannot find state: " + animation);
@@ -407,6 +443,7 @@ namespace FusionEditor {
                 instance.Frames = instance._frames;
                 instance.FrameOffset = instance._frameOffset;
                 instance.SpriteOffset = instance._spriteOffset;
+                instance.ShadowOffset = instance._shadowOffset;
             }
         }
 
@@ -417,6 +454,7 @@ namespace FusionEditor {
 
                 instance._frameOffset = new Position();
                 instance._spriteOffset = new Position();
+                instance._shadowOffset = new Position();
 
                 if (instance._actor != null 
                         && String.IsNullOrEmpty(frame) == false) {
@@ -428,6 +466,9 @@ namespace FusionEditor {
 
                     instance._spriteOffset.X = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().X);
                     instance._spriteOffset.Y = (int)Math.Round(instance._actor.GetCurrentSprite().GetSpriteOffSet().Y);
+
+                    instance._shadowOffset.X = (int)instance._actor.GetCurrentSprite().GetShadowOffsetX();
+                    instance._shadowOffset.Y = (int)instance._actor.GetCurrentSprite().GetShadowOffsetY();
                 }
 
                 List<string> boxItems = new List<string>();
@@ -445,6 +486,7 @@ namespace FusionEditor {
                 instance.BoxItems = boxItems;
                 instance.FrameOffset = instance._frameOffset;
                 instance.SpriteOffset = instance._spriteOffset;
+                instance.ShadowOffset = instance._shadowOffset;
             }
         }
 
@@ -603,6 +645,11 @@ namespace FusionEditor {
             }
         }
 
+        private void SaveShadowOffset() { 
+            _actor.GetCurrentSprite().SetShadowOffsetX(ShadowOffset.X);
+            _actor.GetCurrentSprite().SetShadowOffsetY(ShadowOffset.Y);
+        }
+
         private static void ShowBoundsBoxesOnChangeValue(DependencyObject source, DependencyPropertyChangedEventArgs e) {
             if (e != null) {
                 CharacterView instance = source as CharacterView;
@@ -661,7 +708,7 @@ namespace FusionEditor {
 
         private void SavePosition() {
             if (_actor != null) {
-                _actor.SetPostion(_position.X,0, _position.Y);
+                _actor.SetPostion(_position.X, 0, _position.Y);
             }
         }
 
