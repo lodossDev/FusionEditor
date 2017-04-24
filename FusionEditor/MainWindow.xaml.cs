@@ -33,7 +33,7 @@ namespace FusionEditor {
 
         private void LoadEntityMap() {
             _entitymap = new List<string>();
-            StreamReader file = new StreamReader(FusionEngine.System.contentManager.RootDirectory + "//entity_map.dat");
+            StreamReader file = new StreamReader(FusionEngine.GameManager.GetContentManager().RootDirectory + "//entity_map.dat");
             string line;
 
             while ((line = file.ReadLine()) != null) {

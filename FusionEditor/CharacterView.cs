@@ -28,8 +28,6 @@ namespace FusionEditor {
         private WpfMouse _mouse;
         private MouseState _mouseState;
         private MouseState _previousMouseState;
-
-        private RenderManager _renderManager;
         private ConcurrentDictionary<string, Entity> _entities;
         private Entity _actor;
 
@@ -347,7 +345,7 @@ namespace FusionEditor {
 
                 if (string.IsNullOrEmpty(actor) == false) { 
                     if (instance._actor != null) {
-                        instance._renderManager.RemoveEntity(instance._actor);
+                        GameManager.GetInstance().RemoveEntity(instance._actor);
                     }
 
                     instance._position.X = 400;
@@ -362,13 +360,13 @@ namespace FusionEditor {
                             entity.SetAnimationState(FusionEngine.Animation.State.STANCE);
                            
                             instance._entities.TryAdd(actor, entity);
-                            instance._renderManager.AddEntity(entity);
+                            GameManager.GetInstance().GetRenderManager().AddEntity(entity);
                             instance._actor = entity;
                         }
                     } else {
                         instance._actor = instance._entities[actor];
                         instance._actor.SetAnimationState(FusionEngine.Animation.State.STANCE);
-                        instance._renderManager.AddEntity(instance._actor);
+                        GameManager.GetInstance().GetRenderManager().AddEntity(instance._actor);
                     }
 
                     instance._baseOffset.X = (int)instance._actor.GetBaseOffsetX();
@@ -612,9 +610,9 @@ namespace FusionEditor {
                 bool showBaseSprite = (bool)e.NewValue;
 
                 if (showBaseSprite == true) {
-                    instance._renderManager.ShowStanceSprite();
+                    GameManager.GetInstance().GetRenderManager().ShowStanceSprite();
                 }else {
-                    instance._renderManager.HideStanceSprite();
+                    GameManager.GetInstance().GetRenderManager().HideStanceSprite();
                 }
             }
         }
@@ -625,9 +623,9 @@ namespace FusionEditor {
                 bool showBoxes = (bool)e.NewValue;
 
                 if (showBoxes == true) { 
-                    instance._renderManager.ShowAttackBoxes();
+                    GameManager.GetInstance().GetRenderManager().ShowAttackBoxes();
                 } else {
-                    instance._renderManager.HideAttackBoxes();
+                    GameManager.GetInstance().GetRenderManager().HideAttackBoxes();
                 }
             }
         }
@@ -638,9 +636,9 @@ namespace FusionEditor {
                 bool showBoxes = (bool)e.NewValue;
 
                 if (showBoxes == true) { 
-                    instance._renderManager.ShowBodyBoxes();
+                    GameManager.GetInstance().GetRenderManager().ShowBodyBoxes();
                 } else {
-                    instance._renderManager.HideBodyBoxes();
+                    GameManager.GetInstance().GetRenderManager().HideBodyBoxes();
                 }
             }
         }
@@ -656,9 +654,9 @@ namespace FusionEditor {
                 bool showBoxes = (bool)e.NewValue;
 
                 if (showBoxes == true) { 
-                    instance._renderManager.ShowBoundsBoxes();
+                    GameManager.GetInstance().GetRenderManager().ShowBoundsBoxes();
                 } else {
-                    instance._renderManager.HideBoundsBoxes();
+                    GameManager.GetInstance().GetRenderManager().HideBoundsBoxes();
                 }
             }
         }
@@ -671,7 +669,7 @@ namespace FusionEditor {
 
         private void UpdateFrameOffset() {
             if (_actor != null) { 
-                _actor.SetFrameOffset(_actor.GetCurrentAnimationState(), _actor.GetCurrentFrame() + 1, FrameOffset.X, FrameOffset.Y);
+                _actor.SetFrameOffset(_actor.GetCurrentAnimationState(), _actor.GetCurrentSpriteFrame() + 1, FrameOffset.X, FrameOffset.Y);
                 _actor.SetSpriteOffSet(_actor.GetCurrentAnimationState(), SpriteOffset.X, SpriteOffset.Y);
             }
         }
@@ -681,7 +679,7 @@ namespace FusionEditor {
                     && string.IsNullOrEmpty(SelectedBoxItem) == false
                     && _selectedBoundingBox != null) { 
                 
-                List<CLNS.BoundingBox> boxes =  _actor.GetCurrentSprite().GetBaseBoxes()[_actor.GetCurrentFrame()];
+                List<CLNS.BoundingBox> boxes =  _actor.GetCurrentSprite().GetBaseBoxes()[_actor.GetCurrentSpriteFrame()];
                 boxes.Remove(_selectedBoundingBox);
 
                 _selectedBoundingBox = null;
@@ -723,13 +721,10 @@ namespace FusionEditor {
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            FusionEngine.System.graphicsDevice = _graphicsDeviceManager.GraphicsDevice;
-            FusionEngine.System.contentManager = Content;
-            FusionEngine.System.spriteBatch = _spriteBatch;
+            GameManager.SetupDevice(_graphicsDeviceManager.GraphicsDevice, Content, _spriteBatch);
 
             _fusionEngineASM = Assembly.LoadFrom("./FusionEngine.dll");
             _entities = new ConcurrentDictionary<string, Entity>();
-            _renderManager = new RenderManager();
             _hasSelected = false;
 
             Position.X = 400;
@@ -745,10 +740,13 @@ namespace FusionEditor {
             _keyboardState = _keyboard.GetState();
 
             if (KeyPressed(Keys.Q)) {
-                _renderManager.RenderBoxes();
+                //_renderManager.RenderBoxes();
+                GameManager.GetInstance().GetRenderManager().RenderBoxes();
             }
             
-            _renderManager.Update(time);
+            //_renderManager.Update(time);
+            GameManager.GetInstance().Update(time);
+
             _previousKeyboardState = _keyboardState;
             _previousMouseState = _mouseState;
         }
@@ -757,7 +755,7 @@ namespace FusionEditor {
             _graphicsDeviceManager.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-                _renderManager.Draw(time);
+                GameManager.GetInstance().Render(time);
             _spriteBatch.End();
         }
 
